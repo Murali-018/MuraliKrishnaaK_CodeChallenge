@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class PlayerServiceImpl implements IPlayerService {
 
     @Autowired
-    private PlayerRepository playerRepository;hh
+    private PlayerRepository playerRepository;
 
 	@Override
 	public PlayerDTO addPlayer(PlayerDTO playerDTO) {
