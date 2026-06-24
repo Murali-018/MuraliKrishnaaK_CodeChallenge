@@ -8,6 +8,7 @@ import com.hexaware.springrest.cricket.exception.PlayerNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -69,6 +70,19 @@ public class PlayerServiceImpl implements IPlayerService {
         playerRepository.delete(player);
 	}
 	
+
+    
+    @Override
+    public List<Map<String, Object>> getPlayerStatsByTeam(String teamName) {
+        return playerRepository.findNameAndMatchesByTeam(teamName);
+    }
+    
+    @Override
+    public List<Map<String, Object>> getPlayerStatsByCountry(String countryStateName) {
+        return playerRepository.findNameAndMatchesByCountry(countryStateName);
+    }
+    
+    
 	private Player convertToEntity(PlayerDTO dto) {
         Player player = new Player();
         player.setPlayerId(dto.getPlayerId());

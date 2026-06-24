@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/players")
@@ -44,5 +45,16 @@ public class PlayerController {
     public ResponseEntity<String> deletePlayer(@PathVariable int playerId) {
         playerService.deletePlayer(playerId);
         return new ResponseEntity<>("Player deleted successfully", HttpStatus.OK);
+    }
+    
+    @GetMapping("/team/{teamName}")
+    public List<Map<String, Object>> getPlayersByTeam(@PathVariable String teamName) {
+        return playerService.getPlayerStatsByTeam(teamName);
+    }
+    
+
+    @GetMapping("/country/{countryName}")
+    public List<Map<String, Object>> getPlayersByCountry(@PathVariable String countryName) {
+        return playerService.getPlayerStatsByCountry(countryName);
     }
 }
